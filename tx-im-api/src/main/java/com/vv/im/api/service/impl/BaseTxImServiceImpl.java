@@ -161,6 +161,7 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
         this.initHttp();
     }
 
+    @Override
     public TxImAccountService getAccountService() {
         return accountService;
     }
