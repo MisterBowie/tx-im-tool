@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vv.im.common.bean.ToJson;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -14,6 +18,10 @@ import java.util.List;
  * @since 2022/05/04 17:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SendGroupSystemNotificationRequest implements ToJson {
     /**
      * 向哪个群组发送系统通知

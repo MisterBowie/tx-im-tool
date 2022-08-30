@@ -1,8 +1,8 @@
 package com.vv.im.common.http;
 
-import com.sun.istack.internal.NotNull;
 import com.vv.im.common.error.TxError;
 import com.vv.im.common.error.TxErrorException;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 

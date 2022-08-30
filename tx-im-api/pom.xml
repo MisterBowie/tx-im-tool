@@ -19,7 +19,6 @@
         <dependency>
             <groupId>com.vv.tx</groupId>
             <artifactId>tx-im-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- 测试所用依赖 -->
@@ -91,6 +90,16 @@
             <artifactId>xstream</artifactId>
             <version>1.4.19</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+<!--            <scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

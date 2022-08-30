@@ -15,15 +15,15 @@ import java.util.Objects;
  * @date 2022/5/13
  */
 
-public class OkHttpSimplePostRequestExecutor extends SimplePostRequestExecutor<OkHttpClient> {
+public class ImOkHttpSimplePostRequestExecutor extends SimplePostRequestExecutor<OkHttpClient> {
 
-    public OkHttpSimplePostRequestExecutor(RequestHttp requestHttp) {
+    public ImOkHttpSimplePostRequestExecutor(RequestHttp requestHttp) {
         super(requestHttp);
     }
 
     @Override
     public String execute(String uri, String postEntity) throws TxErrorException, IOException {
-        RequestBody body = RequestBody.Companion.create(postEntity, MediaType.parse("text/plain; charset=utf-8"));
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain; charset=utf-8"),postEntity);
         Request request = new Request.Builder().url(uri).post(body).build();
         Response response = requestHttp.getRequestHttpClient().newCall(request).execute();
         return this.handleResponse(Objects.requireNonNull(response.body()).string());

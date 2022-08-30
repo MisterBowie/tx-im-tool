@@ -16,12 +16,13 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <okhttp.version>4.9.2</okhttp.version>
+        <okhttp.version>4.5.0</okhttp.version>
         <jackson.version>2.13.2.2</jackson.version>
         <junit.version>4.13.2</junit.version>
         <org.json.version>20180130</org.json.version>
         <gson.version>2.8.2</gson.version>
         <tx.im.version>1.0-SNAPSHOT</tx.im.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
@@ -30,6 +31,7 @@
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
+<!--                <scope>provided</scope>-->
                 <version>${okhttp.version}</version>
             </dependency>
             <dependency>
@@ -49,13 +51,13 @@
                 <version>${org.json.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${gson.version}</version>
+                <groupId>com.vv.tx</groupId>
+                <artifactId>tx-im-common</artifactId>
+                <version>${tx.im.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.vv.tx</groupId>
-                <artifactId>tx-im-common</artifactId>
+                <artifactId>tx-im-api</artifactId>
                 <version>${tx.im.version}</version>
             </dependency>
             <dependency>
@@ -130,52 +132,40 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>3.3.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.github.jedis-lock</groupId>
-                <artifactId>jedis-lock</artifactId>
-                <version>1.0.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson</artifactId>
-                <version>3.12.0</version>
-                <optional>true</optional>
-                <scope>provided</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.jodd</groupId>
-                        <artifactId>jodd-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.reactivestreams</groupId>
-                        <artifactId>reactive-streams</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-redis</artifactId>
-                <version>2.3.3.RELEASE</version>
-                <optional>true</optional>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.8</version>
-                <scope>provided</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.redisson</groupId>-->
+<!--                <artifactId>redisson</artifactId>-->
+<!--                <version>3.12.0</version>-->
+<!--                <optional>true</optional>-->
+<!--                <scope>provided</scope>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--                        <artifactId>jackson-core</artifactId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.jodd</groupId>-->
+<!--                        <artifactId>jodd-core</artifactId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.reactivestreams</groupId>-->
+<!--                        <artifactId>reactive-streams</artifactId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.data</groupId>-->
+<!--                <artifactId>spring-data-redis</artifactId>-->
+<!--                <version>2.3.3.RELEASE</version>-->
+<!--                <optional>true</optional>-->
+<!--                <scope>provided</scope>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.projectlombok</groupId>-->
+<!--                <artifactId>lombok</artifactId>-->
+<!--                <version>1.18.8</version>-->
+<!--                <scope>provided</scope>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcpkix-jdk15on</artifactId>
@@ -184,6 +174,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -196,4 +187,46 @@
             <version>5.8.0</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.8.1</version>-->
+<!--                <configuration>-->
+<!--&lt;!&ndash;                    <source>${java.version}</source>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <target>${java.version}</target>&ndash;&gt;-->
+<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-source-plugin</artifactId>-->
+<!--                <version>3.2.1</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>attach-sources</id>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>ninja.standalone.NinjaJetty</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

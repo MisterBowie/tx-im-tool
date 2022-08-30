@@ -1,10 +1,9 @@
 package com.vv.im.api.service.impl;
 
-import cn.hutool.crypto.SignUtil;
 import com.vv.im.api.service.TxImGroupService;
 import com.vv.im.api.service.TxImService;
 import com.vv.im.common.config.TxImConfig;
-import com.vv.im.common.http.OkHttpSimplePostRequestExecutor;
+import com.vv.im.common.http.ImOkHttpSimplePostRequestExecutor;
 import com.vv.im.common.http.RequestExecutor;
 import com.vv.im.common.http.RequestHttp;
 import com.vv.im.api.service.TxImAccountService;
@@ -12,12 +11,8 @@ import com.vv.im.common.bean.ToJson;
 import com.vv.im.common.error.TxError;
 import com.vv.im.common.error.TxErrorException;
 import com.vv.im.common.error.TxRuntimeException;
-import com.vv.im.common.service.TxService;
 import com.vv.im.common.utils.SigUtil;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -51,7 +46,7 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
 
     @Override
     public String post(String url, String postData) throws TxErrorException {
-        return execute(new OkHttpSimplePostRequestExecutor(this), url, postData);
+        return execute(new ImOkHttpSimplePostRequestExecutor(this), url, postData);
     }
 
     @Override
