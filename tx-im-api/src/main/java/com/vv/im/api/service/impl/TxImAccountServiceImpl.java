@@ -7,6 +7,7 @@ import com.vv.im.common.constants.ErrorCode;
 import com.vv.im.common.error.TxError;
 import com.vv.im.common.error.TxErrorException;
 import com.vv.im.common.service.TxService;
+import com.vv.im.common.utils.SigUtil;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
 import lombok.RequiredArgsConstructor;
 

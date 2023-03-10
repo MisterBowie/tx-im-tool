@@ -15,6 +15,7 @@ import com.vv.im.common.service.TxService;
 
 public interface TxImAccountService {
 
+
     /**
      * 导入单个帐号
      *

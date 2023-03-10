@@ -165,4 +165,9 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
     public TxImGroupService getGroupService() {
         return groupService;
     }
+
+    @Override
+    public String initUserSig(String userId) {
+        return SigUtil.genUserSig(userId, imConfig.getExpireTime(), imConfig.getAppId(), imConfig.getKey());
+    }
 }
