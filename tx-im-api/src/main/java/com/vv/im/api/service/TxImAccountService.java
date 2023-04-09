@@ -14,7 +14,12 @@ import com.vv.im.common.service.TxService;
  */
 
 public interface TxImAccountService {
-
+    /**
+     * 初始化用户Sig
+     * @param userId
+     * @return
+     */
+    public String initUserSig(String userId);
 
     /**
      * 导入单个帐号

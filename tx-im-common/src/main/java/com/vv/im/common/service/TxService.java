@@ -73,6 +73,11 @@ public interface TxService {
      */
     void setTxImConfig(TxImConfig config);
 
+    /**
+     * 获取配置
+     */
+    TxImConfig getTxImConfig();
+
 
     /**
      * 获取请求地址

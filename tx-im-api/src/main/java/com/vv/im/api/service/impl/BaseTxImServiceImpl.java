@@ -142,7 +142,7 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
      *
      * @return 签名
      */
-    private String getUserSig(String userId) throws TxErrorException {
+    public String getUserSig(String userId) throws TxErrorException {
         if (Objects.isNull(imConfig)) {
             throw new TxErrorException("请检查是否缺少了IM配置");
         }
@@ -166,8 +166,8 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
         return groupService;
     }
 
-    @Override
-    public String initUserSig(String userId) {
-        return SigUtil.genUserSig(userId, imConfig.getExpireTime(), imConfig.getAppId(), imConfig.getKey());
+   public TxImConfig getTxImConfig(){
+        return imConfig;
     }
+
 }

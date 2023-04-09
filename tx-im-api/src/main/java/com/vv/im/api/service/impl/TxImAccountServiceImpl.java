@@ -39,6 +39,11 @@ public class TxImAccountServiceImpl implements TxImAccountService {
     private static final String QUERY_ONLINE_STATUS_COMMAND = "query_online_status";
 
     @Override
+    public String initUserSig(String userId) {
+        return SigUtil.genUserSig(userId,txService.getTxImConfig().getExpireTime(), txService.getTxImConfig().getAppId(), txService.getTxImConfig().getKey());
+    }
+
+    @Override
     public AccountImportResult accountImport(AccountImportRequest accountImportRequest) {
         final String post = txService.post(txService.getUrl(SERVICE_NAME, ACCOUNT_IMPORT_COMMAND), accountImportRequest.toJson());
         final TxError txError = TxError.fromJson(post);

@@ -25,10 +25,6 @@ public interface TxImService extends TxService {
      */
     public TxImGroupService getGroupService();
 
-    /**
-     * 初始化用户Sig
-     * @param userId
-     * @return
-     */
-    public String initUserSig(String userId);
+    public String getUserSig(String userId);
+
 }
