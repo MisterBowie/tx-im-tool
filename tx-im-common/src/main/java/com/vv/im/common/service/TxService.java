@@ -86,4 +86,13 @@ public interface TxService {
      * @return
      */
     public String getUrl(String serviceName, String command);
+
+    /**
+     * 获取请求地址
+     * @param serviceName
+     * @param command
+     * @param random
+     * @return
+     */
+    public String getUrl(String serviceName, String command,Long random);
 }

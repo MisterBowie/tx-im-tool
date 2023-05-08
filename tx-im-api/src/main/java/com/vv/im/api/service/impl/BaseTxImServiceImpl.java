@@ -126,6 +126,20 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
     }
 
     /**
+     * 获取请求 URL
+     *
+     * @param serviceName 内部服务名
+     * @param command     命令字
+     * @param random      随机数
+     * @return url
+     */
+    public String getUrl(String serviceName, String command, Long random) {
+        String sig = getAdminUserSig();
+        return String.format(FORMAT_URL, DEFAULT_DOMAIN, VERSION, serviceName, command,
+                imConfig.getAppId(), imConfig.getAdminUser(), sig, random);
+    }
+
+    /**
      * 获取签名
      *
      * @return 签名
@@ -166,7 +180,7 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
         return groupService;
     }
 
-   public TxImConfig getTxImConfig(){
+    public TxImConfig getTxImConfig() {
         return imConfig;
     }
 

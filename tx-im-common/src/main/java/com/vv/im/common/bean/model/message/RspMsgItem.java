@@ -2,6 +2,7 @@ package com.vv.im.common.bean.model.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
+import lombok.Data;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @author hyh
  * @since 2021/08/01 13:40
  */
+@Data
 public class RspMsgItem {
     /**
      * 消息的发送者

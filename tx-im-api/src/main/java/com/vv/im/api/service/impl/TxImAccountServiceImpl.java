@@ -22,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TxImAccountServiceImpl implements TxImAccountService {
     private final TxService txService;
+
     /**
      * 帐号管理服务名
      */
