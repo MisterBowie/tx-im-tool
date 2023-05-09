@@ -59,7 +59,7 @@ public class TxImMessageServiceImpl implements TxImMessageService {
     }
 
     public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest, long random) throws IOException {
-        final String post = txService.post(txService.getUrl(SERVICE_NAME, SEND_MSG_COMMAND), sendMsgRequest.toJson());
+        final String post = txService.post(txService.getUrl(SERVICE_NAME, SEND_MSG_COMMAND, random), sendMsgRequest.toJson());
         final TxError txError = TxError.fromJson(post);
         if (ErrorCode.SUCCESS.getCode().equals(txError.getErrorCode())) {
             return JsonBuilderUtil.string2Obj(post, SendMsgResult.class);
@@ -84,7 +84,7 @@ public class TxImMessageServiceImpl implements TxImMessageService {
     }
 
     public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest, long random) throws IOException {
-        final String post = txService.post(txService.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND), batchSendMsgRequest.toJson());
+        final String post = txService.post(txService.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND,random), batchSendMsgRequest.toJson());
         final TxError txError = TxError.fromJson(post);
         if (ErrorCode.SUCCESS.getCode().equals(txError.getErrorCode())) {
             return JsonBuilderUtil.string2Obj(post, BatchSendMsgResult.class);
@@ -284,7 +284,7 @@ public class TxImMessageServiceImpl implements TxImMessageService {
     }
 
     public SetKeyValuesResult setKeyValues(SetKeyValuesRequest setKeyValuesRequest, long random) throws IOException {
-        final String post = txService.post(txService.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND,random), setKeyValuesRequest.toJson());
+        final String post = txService.post(txService.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND, random), setKeyValuesRequest.toJson());
         final TxError txError = TxError.fromJson(post);
         if (ErrorCode.SUCCESS.getCode().equals(txError.getErrorCode())) {
             return JsonBuilderUtil.string2Obj(post, SetKeyValuesResult.class);

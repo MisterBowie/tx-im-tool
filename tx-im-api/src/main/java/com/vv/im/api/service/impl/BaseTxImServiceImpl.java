@@ -1,6 +1,7 @@
 package com.vv.im.api.service.impl;
 
 import com.vv.im.api.service.TxImGroupService;
+import com.vv.im.api.service.TxImMessageService;
 import com.vv.im.api.service.TxImService;
 import com.vv.im.common.config.TxImConfig;
 import com.vv.im.common.http.ImOkHttpSimplePostRequestExecutor;
@@ -32,6 +33,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp<H> {
     private TxImAccountService accountService = new TxImAccountServiceImpl(this);
     private TxImGroupService groupService = new TxImGroupServiceImpl(this);
+
+    private TxImMessageService messageService = new TxImMessageServiceImpl(this);
     private int retrySleepMillis = 1000;
     private int maxRetryTimes = 5;
     private static final String VERSION = "v4";
@@ -178,6 +181,11 @@ public abstract class BaseTxImServiceImpl<H> implements TxImService, RequestHttp
     @Override
     public TxImGroupService getGroupService() {
         return groupService;
+    }
+
+    @Override
+    public TxImMessageService getMessageService() {
+        return messageService;
     }
 
     public TxImConfig getTxImConfig() {
