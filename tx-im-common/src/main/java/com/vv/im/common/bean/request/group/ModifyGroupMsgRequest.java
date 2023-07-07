@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vv.im.common.bean.ToJson;
 import com.vv.im.common.bean.model.message.TIMMsgElement;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
  * @since 2022/7/20 11:04
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Data
 public class ModifyGroupMsgRequest implements ToJson {
-    private static final long serialVersionUID = 3479900458252545494L;
     /**
      * 操作的群 ID
      */
