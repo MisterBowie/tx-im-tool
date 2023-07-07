@@ -10,6 +10,8 @@ import com.vv.im.common.service.TxService;
 import com.vv.im.common.utils.json.JsonBuilderUtil;
 import lombok.AllArgsConstructor;
 
+import java.io.IOException;
+
 /**
  * <prev>
  *
@@ -26,40 +28,63 @@ public class TxImGroupServiceImpl implements TxImGroupService {
     /**
      * 群组管理服务名
      */
-    private static final String SERVICE_NAME = "group_open_http_svc";
-    private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
+    public static final String SERVICE_NAME = "group_open_http_svc";
+    public static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
+    public static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
+    public static final String SERVICE_NAME_OPEN_IM = "openim";
+    public static final String SERVICE_NAME_MILLION_GROUP = "million_group_open_http_svc";
+    public static final String SERVICE_NAME_OPEN_IM_MSG_EXT = "openim_msg_ext_http_svc";
 
     /**
      * 群组管理相关命令字
      */
-    private static final String GET_APPID_GROUP_LIST_COMMAND = "get_appid_group_list";
-    private static final String CREATE_GROUP_COMMAND = "create_group";
-    private static final String GET_GROUP_INFO_COMMAND = "get_group_info";
-    private static final String GET_GROUP_MEMBER_INFO_COMMAND = "get_group_member_info";
-    private static final String MODIFY_GROUP_BASE_INFO_COMMAND = "modify_group_base_info";
-    private static final String ADD_GROUP_MEMBER_COMMAND = "add_group_member";
-    private static final String DELETE_GROUP_MEMBER_COMMAND = "delete_group_member";
-    private static final String MODIFY_GROUP_MEMBER_INFO_COMMAND = "modify_group_member_info";
-    private static final String DESTROY_GROUP_COMMAND = "destroy_group";
-    private static final String GET_JOINED_GROUP_LIST_COMMAND = "get_joined_group_list";
-    private static final String GET_ROLE_IN_GROUP_COMMAND = "get_role_in_group";
-    private static final String FORBID_SEND_MSG_COMMAND = "forbid_send_msg";
-    private static final String GET_GROUP_SHUTTED_UIN_COMMAND = "get_group_shutted_uin";
-    private static final String SEND_GROUP_MSG_COMMAND = "send_group_msg";
-    private static final String SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND = "send_group_system_notification";
-    private static final String CHANGE_GROUP_OWNER_COMMAND = "change_group_owner";
-    private static final String GROUP_MSG_RECALL_COMMAND = "group_msg_recall";
-    private static final String IMPORT_GROUP_COMMAND = "import_group";
-    private static final String IMPORT_GROUP_MSG_COMMAND = "import_group_msg";
-    private static final String IMPORT_GROUP_MEMBER_COMMAND = "import_group_member";
-    private static final String SET_UNREAD_MSG_NUM_COMMAND = "set_unread_msg_num";
-    private static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
-    private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
-    private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
-    private static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
-    private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
-    private static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
-    private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
+    public static final String GET_APPID_GROUP_LIST_COMMAND = "get_appid_group_list";
+    public static final String CREATE_GROUP_COMMAND = "create_group";
+    public static final String GET_GROUP_INFO_COMMAND = "get_group_info";
+    public static final String GET_GROUP_MEMBER_INFO_COMMAND = "get_group_member_info";
+    public static final String MODIFY_GROUP_BASE_INFO_COMMAND = "modify_group_base_info";
+    public static final String ADD_GROUP_MEMBER_COMMAND = "add_group_member";
+    public static final String DELETE_GROUP_MEMBER_COMMAND = "delete_group_member";
+    public static final String MODIFY_GROUP_MEMBER_INFO_COMMAND = "modify_group_member_info";
+    public static final String DESTROY_GROUP_COMMAND = "destroy_group";
+    public static final String GET_JOINED_GROUP_LIST_COMMAND = "get_joined_group_list";
+    public static final String GET_ROLE_IN_GROUP_COMMAND = "get_role_in_group";
+    public static final String FORBID_SEND_MSG_COMMAND = "forbid_send_msg";
+    public static final String GET_GROUP_MUTED_ACCOUNT_COMMAND = "get_group_muted_account";
+    public static final String SEND_GROUP_MSG_COMMAND = "send_group_msg";
+    public static final String SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND = "send_group_system_notification";
+    public static final String CHANGE_GROUP_OWNER_COMMAND = "change_group_owner";
+    public static final String GROUP_MSG_RECALL_COMMAND = "group_msg_recall";
+    public static final String IMPORT_GROUP_COMMAND = "import_group";
+    public static final String IMPORT_GROUP_MSG_COMMAND = "import_group_msg";
+    public static final String IMPORT_GROUP_MEMBER_COMMAND = "import_group_member";
+    public static final String SET_UNREAD_MSG_NUM_COMMAND = "set_unread_msg_num";
+    public static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
+    public static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
+    public static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
+    public static final String GET_MEMBERS_COMMAND = "get_members";
+    public static final String MODIFY_USER_INFO_COMMAND = "modify_user_info";
+    public static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
+    public static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
+    public static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
+    public static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
+    public static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
+    public static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
+    public static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
+    public static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
+    public static final String CREATE_GROUP_TOPIC_COMMAND = "create_topic";
+    public static final String GET_GROUP_TOPIC_COMMAND = "get_topic";
+    public static final String MODIFY_GROUP_TOPIC_COMMAND = "modify_topic";
+    public static final String IMPORT_GROUP_TOPIC_COMMAND = "import_topic";
+    public static final String DESTROY_GROUP_TOPIC_COMMAND = "destroy_topic";
+    public static final String GET_GROUP_BAN_MEMBER_COMMAND = "get_group_ban_member";
+    public static final String BAN_GROUP_MEMBER_COMMAND = "ban_group_member";
+    public static final String UNBAN_GROUP_MEMBER_COMMAND = "unban_group_member";
+    public static final String GROUP_GET_KEY_VALUES_COMMAND = "group_get_key_values";
+    public static final String GROUP_SET_KEY_VALUES_COMMAND = "group_set_key_values";
+    public static final String GET_GROUP_COUNTER_COMMAND = "get_group_counter";
+    public static final String UPDATE_GROUP_COUNTER_COMMAND = "update_group_counter";
+    public static final String DELETE_GROUP_COUNTER_COMMAND = "delete_group_counter";
 
     @Override
     public GroupGetAppIdListResult getAppIdGroupList(GetAppIdGroupListRequest request) {
@@ -183,7 +208,7 @@ public class TxImGroupServiceImpl implements TxImGroupService {
 
     @Override
     public GetGroupShuttedUinResult getGroupShuttedUin(GetGroupShuttedUinRequest request) {
-        final String post = txService.post(txService.getUrl(SERVICE_NAME, GET_GROUP_SHUTTED_UIN_COMMAND), request.toJson());
+        final String post = txService.post(txService.getUrl(SERVICE_NAME, GET_GROUP_MUTED_ACCOUNT_COMMAND), request.toJson());
         final TxError txError = TxError.fromJson(post);
         if (ErrorCode.SUCCESS.getCode().equals(txError.getErrorCode())) {
             return JsonBuilderUtil.string2Obj(post, GetGroupShuttedUinResult.class);
@@ -341,4 +366,19 @@ public class TxImGroupServiceImpl implements TxImGroupService {
         throw new TxErrorException(txError);
     }
 
+
+    /**
+     * 修改群聊历史消息
+     *
+     * @param request 请求参数
+     * @return 结果
+     */
+    public ModifyGroupMsgResult modifyGroupMsg(ModifyGroupMsgRequest request) {
+        final String post = txService.post(txService.getUrl(SERVICE_NAME_OPEN_IM, MODIFY_GROUP_MSG_COMMAND), request.toJson());
+        final TxError txError = TxError.fromJson(post);
+        if (ErrorCode.SUCCESS.getCode().equals(txError.getErrorCode())) {
+            return JsonBuilderUtil.string2Obj(post, ModifyGroupMsgResult.class);
+        }
+        throw new TxErrorException(txError);
+    }
 }

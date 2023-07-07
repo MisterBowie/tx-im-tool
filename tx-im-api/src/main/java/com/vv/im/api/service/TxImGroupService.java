@@ -3,6 +3,8 @@ package com.vv.im.api.service;
 import com.vv.im.common.bean.request.group.*;
 import com.vv.im.common.bean.response.group.*;
 
+import java.io.IOException;
+
 /**
  * <prev>
  * 群聊操作service
@@ -238,5 +240,14 @@ public interface TxImGroupService {
      * @return 结果
      */
     public SetGroupAttrResult setGroupAttr(SetGroupAttrRequest setGroupAttrRequest);
+
+    /**
+     * 修改群聊历史消息
+     *
+     * @param request 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupMsgResult modifyGroupMsg(ModifyGroupMsgRequest request);
 
 }
