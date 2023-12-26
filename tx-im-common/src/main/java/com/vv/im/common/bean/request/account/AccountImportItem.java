@@ -9,25 +9,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 /**
- * 导入多个帐号-请求参数
- *
  * @author <a href="https://github.com/MisterBowie">MisterBowie</a>
- * @since 2021/7/30 17:07
+ * @since 2021/7/30 17:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class AccountMultiImportRequest implements ToJson {
+public class AccountImportItem implements ToJson {
     /**
-     * 用户名，单个用户名长度不超过32字节，单次最多导入100个用户名
+     * 帐号的 UserID
      */
-    @JsonProperty("Accounts")
-    private List<AccountImportItem> accounts;
+    @JsonProperty("UserID")
+    private String userId;
+    /**
+     * 帐号的昵称
+     */
+    @JsonProperty("Nick")
+    private String nick;
+    /**
+     * 帐号的头像
+     */
+    @JsonProperty("FaceUrl")
+    private String faceUrl;
 
     @Override
     public String toJson() {
