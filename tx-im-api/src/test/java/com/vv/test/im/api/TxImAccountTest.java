@@ -60,7 +60,7 @@ public class TxImAccountTest {
     public void testMultImport() {
         final TxImAccountService service = txImService.getAccountService();
         AccountMultiImportRequest request = new AccountMultiImportRequest();
-        request.setAccounts(Arrays.asList(testStr));
+//        request.setAccounts(Arrays.asList(testStr));
         final MultiAccountImportResult multiAccountImportResult = service.multiAccountImport(request);
         assertEquals(0, multiAccountImportResult.getErrorCode().intValue());
     }

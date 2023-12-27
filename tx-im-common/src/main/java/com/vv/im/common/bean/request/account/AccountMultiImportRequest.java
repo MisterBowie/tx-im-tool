@@ -26,7 +26,7 @@ public class AccountMultiImportRequest implements ToJson {
     /**
      * 用户名，单个用户名长度不超过32字节，单次最多导入100个用户名
      */
-    @JsonProperty("Accounts")
+    @JsonProperty("AccountList")
     private List<AccountImportItem> accounts;
 
     @Override
